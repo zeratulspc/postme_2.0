@@ -1,6 +1,6 @@
 import 'package:http/http.dart' as http;
 
-import 'data/Post.dart';
+import 'package:postme/fnc/data/Post.dart';
 
 class Sender {
   Future<int> post(Post post) async {

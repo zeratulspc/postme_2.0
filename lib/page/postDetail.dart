@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:postme/fnc/Data/Post.dart';
+import 'package:postme/fnc/data/Post.dart';
 
 class PostDetail extends StatelessWidget {
   final Post post;
