@@ -28,7 +28,6 @@ class _PostDetailState extends State<PostDetail> {
 
   @override
   void initState() {
-
     super.initState();
   }
 
@@ -86,7 +85,24 @@ class _PostDetailState extends State<PostDetail> {
           }
         },
       ),
-      //bottomSheet: CommentList(postId),
     );
   }
+
+  void showCommentSheet(BuildContext context) {
+    showBottomSheet(
+        context: context,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(15.0),
+              topRight: Radius.circular(15.0)
+          )
+        ),
+        builder: (context) {
+          return CommentList(postId, (){
+            
+          });
+        }
+    );
+  }
+
 }
