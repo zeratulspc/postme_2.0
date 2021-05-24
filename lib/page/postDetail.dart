@@ -26,6 +26,12 @@ class _PostDetailState extends State<PostDetail> {
     Colors.deepOrange
   ];
 
+  @override
+  void initState() {
+
+    super.initState();
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -80,7 +86,7 @@ class _PostDetailState extends State<PostDetail> {
           }
         },
       ),
-      bottomSheet: CommentList(postId),
+      //bottomSheet: CommentList(postId),
     );
   }
 }

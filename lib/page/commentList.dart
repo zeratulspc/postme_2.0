@@ -5,21 +5,25 @@ import 'package:postme/page/commetItem.dart';
 
 class CommentList extends StatefulWidget {
   final int postId;
-  CommentList(this.postId);
-  _CommentListState createState()=> _CommentListState(postId);
+  final Function onCommentsLoaded;
+  CommentList(this.postId, this.onCommentsLoaded);
+  _CommentListState createState()=> _CommentListState(postId, onCommentsLoaded);
 }
 
 class _CommentListState extends State<CommentList> {
   final int postId;
-
-  _CommentListState(this.postId);
+  final Function onCommentsLoaded;
+  _CommentListState(this.postId, this.onCommentsLoaded);
 
   Fetcher fetch = Fetcher();
   List<Comment> comments = [];
 
   @override
   void initState() {
-    fetch.getComments(postId).then((v) => setState(() => comments=v));
+    fetch.getComments(postId).then((v) => {
+      setState(() => comments=v),
+      onCommentsLoaded
+    });
     super.initState();
   }
 
