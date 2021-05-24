@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:postme/page/splash.dart';
 
-import 'page/home.dart';
-
 void main() {
   runApp(PostMe());
 }
