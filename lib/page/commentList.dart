@@ -25,13 +25,31 @@ class _CommentListState extends State<CommentList> {
 
   @override
   Widget build(BuildContext context) {
-    return comments.length != 0 ?ListView.builder(
-        itemCount: comments.length,
-        itemBuilder: (context, i) {
-          return CommentItem(comments[i]);
-        }
-    ) : Center(
-      child: CircularProgressIndicator(),
+    return Container(
+      height: 200,
+      child: Column(
+        children: [
+          Container(
+            padding: EdgeInsets.symmetric(vertical: 5.0, horizontal: 15.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "Comments",
+                  style: Theme.of(context).textTheme.headline6,
+                ),
+                comments.length != 0 ? SizedBox() : CircularProgressIndicator()
+              ],
+            ),
+          ),
+          ListView.builder(
+              itemCount: comments.length,
+              itemBuilder: (context, i) {
+                return CommentItem(comments[i]);
+              }
+          )
+        ],
+      ),
     );
   }
 

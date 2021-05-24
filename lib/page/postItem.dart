@@ -52,7 +52,7 @@ class PostItem extends StatelessWidget {
             ),
           ),
           onTap: (){
-            Navigator.push(context, MaterialPageRoute(builder: (context) => PostDetail(post)));
+            Navigator.push(context, MaterialPageRoute(builder: (context) => PostDetail(post.id)));
           },
         ),
       ),

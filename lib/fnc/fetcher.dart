@@ -21,6 +21,15 @@ class Fetcher {
     }
   }
 
+  Future<Post> getPost(int postId) async {
+    final http.Response response = await http.get(Uri.parse('https://jsonplaceholder.typicode.com/posts/$postId'));
+    if(response.statusCode == 200) {
+      return Post.fromJson(jsonDecode(response.body));
+    } else {
+      throw Exception('불러오기 실패');
+    }
+  }
+
   Future<List<Comment>> getComments(int postId) async {
     final http.Response response = await http.get(Uri.parse('https://jsonplaceholder.typicode.com/posts/$postId/comments'));
     if(response.statusCode == 200) {

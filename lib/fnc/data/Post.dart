@@ -1,4 +1,6 @@
 
+import 'package:flutter/material.dart';
+
 class Post {
   final int userId;
   final int id;
@@ -14,6 +16,13 @@ class Post {
         id = json['id'],
         title = json['title'],
         body = json['body'];
+
+  ///asyncSnapshot 직렬화
+  Post.fromSnapshot(AsyncSnapshot<dynamic> snapshot) :
+      userId = snapshot.data.userId,
+      id = snapshot.data.id,
+      title = snapshot.data.title,
+      body = snapshot.data.body;
 
   Map<String, dynamic> toJson() =>
       {
