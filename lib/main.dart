@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:postme/page/splash.dart';
 
 import 'page/home.dart';
 
@@ -17,7 +18,7 @@ class PostMe extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.purple,
       ),
-      home: HomePage(),
+      home: SplashPage(),
     );
   }
 }

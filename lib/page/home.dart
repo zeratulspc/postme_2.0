@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:postme/page/appInfo.dart';
 
 import 'postEdit.dart';
 import 'postList.dart';
@@ -37,7 +38,7 @@ class _HomePageState extends State<HomePage> {
             Navigator.push(context, MaterialPageRoute(builder: (context)=> SettingPage()));
             break;
           case 1:
-
+            Navigator.push(context, MaterialPageRoute(builder: (context)=> AppInfoPage()));
             break;
           default:
             break;
@@ -46,11 +47,11 @@ class _HomePageState extends State<HomePage> {
       itemBuilder: (BuildContext context) => <PopupMenuEntry<int>>[
         PopupMenuItem<int>(
           value: 0,
-          child: Text('설정'),
+          child: Text('Setting'),
         ),
         PopupMenuItem<int>(
           value: 1,
-          child: Text('정보'),
+          child: Text('Info'),
         ),
       ],
     );
