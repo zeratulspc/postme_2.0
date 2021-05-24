@@ -19,11 +19,13 @@ class _PostListState extends State<PostList> {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
+    return posts.length != 0 ?ListView.builder(
         itemCount: posts.length,
         itemBuilder: (context, i) {
           return PostItem(posts[i]);
         }
+    ) : Center(
+      child: CircularProgressIndicator(),
     );
   }
 
