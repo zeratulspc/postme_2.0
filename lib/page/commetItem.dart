@@ -9,9 +9,11 @@ class CommentItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      title: Text("${comment.name}"),
-      subtitle: Text("${comment.body}"),
+    return Card(
+      child: ListTile(
+        title: Text("${comment.name}"),
+        subtitle: Text("${comment.body}"),
+      ),
     );
   }
 }

@@ -32,53 +32,62 @@ class _PostDetailState extends State<PostDetail> {
       appBar: AppBar(
         title: Text("Post"),
       ),
-      body: FutureBuilder(
-        future: Fetcher().getPost(postId),
-        builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
-          if(snapshot.hasData) {
-            Post post = Post.fromSnapshot(snapshot);
-            return Column(
-              children: [
-                ///header
-                Container(
-                  margin: EdgeInsets.fromLTRB(15, 15, 15, 5),
-                  child: Column(
-                    children: [
-                      Text(
-                        post.title,
-                        style: Theme.of(context).textTheme.headline5,
-                        textAlign: TextAlign.center,
-                      ),
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
+      body: Stack(
+        children: [
+          FutureBuilder(
+            future: Fetcher().getPost(postId),
+            builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+              if(snapshot.hasData) {
+                Post post = Post.fromSnapshot(snapshot);
+                return Column(
+                  children: [
+                    ///header
+                    Container(
+                      margin: EdgeInsets.fromLTRB(15, 15, 15, 5),
+                      child: Column(
                         children: [
-                          Icon(Icons.person, color: randomColorList[Random().nextInt(randomColorList.length)]),
-                          SizedBox(width: 2,),
-                          Text("User${post.userId}"),
+                          Text(
+                            post.title,
+                            style: Theme.of(context).textTheme.headline5,
+                            textAlign: TextAlign.center,
+                          ),
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Icon(Icons.person, color: randomColorList[Random().nextInt(randomColorList.length)]),
+                              SizedBox(width: 2,),
+                              Text("User${post.userId}"),
+                            ],
+                          ),
                         ],
                       ),
-                    ],
-                  ),
-                ),
-                ///body
-                Container(
-                  margin: EdgeInsets.fromLTRB(15, 5, 15, 5),
-                  child: Text(
-                    post.body,
-                    style: Theme.of(context).textTheme.bodyText2,
-                  ),
-                  alignment: Alignment.centerLeft,
-                )
-              ],
-            );
-          } else {
-            return Center(
-              child: CircularProgressIndicator(),
-            );
-          }
-        },
+                    ),
+                    ///body
+                    Container(
+                      margin: EdgeInsets.fromLTRB(15, 5, 15, 5),
+                      child: Text(
+                        post.body,
+                        style: Theme.of(context).textTheme.bodyText2,
+                      ),
+                      alignment: Alignment.centerLeft,
+                    )
+                  ],
+                );
+              } else {
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
+            },
+          ),
+          DraggableScrollableSheet(initialChildSize: 0.35,
+            minChildSize: 0.08,
+            builder: (BuildContext context, ScrollController scrollController) {
+              return CommentList(postId,scrollController,(){});
+            },
+          ),
+        ],
       ),
-      bottomSheet: CommentList(postId,(){}),
     );
   }
 }
