@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:postme/fnc/data/Post.dart';
+import 'package:postme/fnc/data/RandomColor.dart';
 import 'package:postme/fnc/fetcher.dart';
 import 'package:postme/page/commentList.dart';
 
@@ -17,14 +18,6 @@ class _PostDetailState extends State<PostDetail> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
   final int postId;
   _PostDetailState(this.postId);
-  final randomColorList = [
-    Colors.purple,
-    Colors.blueAccent,
-    Colors.amber,
-    Colors.cyan,
-    Colors.lightGreenAccent,
-    Colors.deepOrange
-  ];
 
   @override
   void initState() {
@@ -99,7 +92,6 @@ class _PostDetailState extends State<PostDetail> {
         ),
         builder: (context) {
           return CommentList(postId, (){
-            
           });
         }
     );

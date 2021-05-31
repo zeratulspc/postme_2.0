@@ -2,21 +2,13 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:postme/fnc/data/Post.dart';
+import 'package:postme/fnc/data/RandomColor.dart';
 import 'postDetail.dart';
 
 
 class PostItem extends StatelessWidget {
   final Post post;
   PostItem(this.post);
-
-  final randomColorList = [
-    Colors.purple,
-    Colors.blueAccent,
-    Colors.amber,
-    Colors.cyan,
-    Colors.lightGreenAccent,
-    Colors.deepOrange
-  ];
 
   @override
   Widget build(BuildContext context) {
