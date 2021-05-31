@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:postme/page/appInfo.dart';
 
-import 'postEdit.dart';
-import 'postList.dart';
+import 'package:postme/page/post/postEdit.dart';
+import 'package:postme/page/post/postList.dart';
 import 'setting.dart';
 
 class HomePage extends StatefulWidget {

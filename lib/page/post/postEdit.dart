@@ -9,15 +9,16 @@ class PostEditPage extends StatefulWidget {
 }
 
 class _PostEditPageState extends State<PostEditPage> {
-  late final Post? post;
-  late final String appbarTitle;
   final TextEditingController textEditingController = TextEditingController();
+  final Post? post;
+  bool _isEditPost = false;
 
   _PostEditPageState({this.post}) {
     if(post == null) {
-      appbarTitle = "add Post";
+      _isEditPost = false;
     } else {
-      appbarTitle=post!.title;
+      _isEditPost = true;
+      textEditingController.text = post!.body;
     }
   }
 
@@ -30,19 +31,19 @@ class _PostEditPageState extends State<PostEditPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(appbarTitle),
+        title: Text(_isEditPost?"Edit Post":"New Post"),
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         onPressed: (){
           //TODO valid check
-          post = Post(
+          var _post = Post(
             0,
             0,
             "제목",
             textEditingController.text,
           );
-          Sender().post(post!);
+          Sender().post(_post);
         },
       ),
       body: Container(

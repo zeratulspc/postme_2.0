@@ -9,9 +9,9 @@ class CommentItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.green,
-      child: Text("${comment.body}"),
+    return ListTile(
+      title: Text("${comment.name}"),
+      subtitle: Text("${comment.body}"),
     );
   }
 }

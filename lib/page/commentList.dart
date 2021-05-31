@@ -30,11 +30,12 @@ class _CommentListState extends State<CommentList> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 200,
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
           Container(
-            padding: EdgeInsets.symmetric(vertical: 5.0, horizontal: 15.0),
+            color: Colors.green,
+            padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 15.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -46,12 +47,17 @@ class _CommentListState extends State<CommentList> {
               ],
             ),
           ),
-          ListView.builder(
-              itemCount: comments.length,
-              itemBuilder: (context, i) {
-                return CommentItem(comments[i]);
-              }
-          )
+          Container(
+            height: 200,
+            child: ListView.builder(
+                scrollDirection: Axis.vertical,
+                shrinkWrap: true,
+                itemCount: comments.length,
+                itemBuilder: (context, i) {
+                  return CommentItem(comments[i]);
+                }
+            ),
+          ),
         ],
       ),
     );
