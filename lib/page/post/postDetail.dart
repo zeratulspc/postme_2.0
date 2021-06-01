@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:postme/fnc/data/Post.dart';
 import 'package:postme/fnc/data/RandomColor.dart';
 import 'package:postme/fnc/fetcher.dart';
-import 'package:postme/page/commentList.dart';
+import 'package:postme/page/comment/commentList.dart';
 
 class PostDetail extends StatefulWidget {
   final int postId;
@@ -12,12 +12,12 @@ class PostDetail extends StatefulWidget {
   _PostDetailState createState() => _PostDetailState(postId);
 }
 
-
 class _PostDetailState extends State<PostDetail> {
-
   final scaffoldKey = GlobalKey<ScaffoldState>();
   final int postId;
   _PostDetailState(this.postId);
+
+  static const bottomSheetHeaderSize = 0.08;
 
   @override
   void initState() {
@@ -27,6 +27,7 @@ class _PostDetailState extends State<PostDetail> {
 
   @override
   Widget build(BuildContext context) {
+    Size screenSize = MediaQuery.of(context).size;
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
@@ -81,17 +82,21 @@ class _PostDetailState extends State<PostDetail> {
               }
             },
           ),
-
-
-          Expanded(
-            child: DraggableScrollableSheet(
-              initialChildSize: 1.0,
-              maxChildSize: 1.0,
-              minChildSize: 0.1,
-              builder: (BuildContext context, ScrollController scrollController) {
-                return CommentList(postId,scrollController,(){});
-              },
-            ),
+          DraggableScrollableSheet(
+            initialChildSize: bottomSheetHeaderSize,
+            maxChildSize: 1.0,
+            minChildSize: bottomSheetHeaderSize,
+            builder: (BuildContext context, ScrollController scrollController) {
+              return Container(
+                color: Colors.grey[200],
+                child: SingleChildScrollView(
+                  controller: scrollController,
+                  child: CommentList(postId,screenSize,bottomSheetHeaderSize,(){
+                    
+                  }),
+                ),
+              );
+            },
           ),
         ],
       ),

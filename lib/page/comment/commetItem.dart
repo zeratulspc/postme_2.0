@@ -1,5 +1,8 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:postme/fnc/data/Comment.dart';
+import 'package:postme/fnc/data/RandomColor.dart';
 
 class CommentItem extends StatelessWidget {
 
@@ -9,8 +12,12 @@ class CommentItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
+    return Container(
       child: ListTile(
+        leading: Icon(
+            Icons.person,
+            size: 48.0,
+        ),
         title: Text("${comment.name}"),
         subtitle: Text("${comment.body}"),
       ),

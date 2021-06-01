@@ -15,6 +15,7 @@ class PostMe extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.purple,
+        backgroundColor: Colors.white
       ),
       home: SplashPage(),
     );
