@@ -32,6 +32,7 @@ class _PostDetailState extends State<PostDetail> {
       appBar: AppBar(
         title: Text("Post"),
       ),
+      backgroundColor: Colors.white,
       body: Stack(
         children: [
           FutureBuilder(
@@ -80,11 +81,17 @@ class _PostDetailState extends State<PostDetail> {
               }
             },
           ),
-          DraggableScrollableSheet(initialChildSize: 0.35,
-            minChildSize: 0.08,
-            builder: (BuildContext context, ScrollController scrollController) {
-              return CommentList(postId,scrollController,(){});
-            },
+
+
+          Expanded(
+            child: DraggableScrollableSheet(
+              initialChildSize: 1.0,
+              maxChildSize: 1.0,
+              minChildSize: 0.1,
+              builder: (BuildContext context, ScrollController scrollController) {
+                return CommentList(postId,scrollController,(){});
+              },
+            ),
           ),
         ],
       ),

@@ -18,14 +18,14 @@ class _CommentListState extends State<CommentList> {
   _CommentListState(this.postId, this.scrollController,this.onCommentsLoaded);
 
   Fetcher fetch = Fetcher();
-  List<Comment> comments = [];
+  List<Comment> comments = [
+    Comment(1,2,"asd","asd","asda"),
+    Comment(1,2,"asd","asd","asda"),
+  ];
 
   @override
   void initState() {
-    fetch.getComments(postId).then((v) => {
-      setState(() => comments=v),
-      onCommentsLoaded
-    });
+    //fetch.getComments(postId).then((v) => {setState(() => comments=v), onCommentsLoaded});
     super.initState();
   }
 
@@ -34,41 +34,46 @@ class _CommentListState extends State<CommentList> {
     return SingleChildScrollView(
       controller: scrollController,
       child: Column(
-        mainAxisSize: MainAxisSize.min,
+        mainAxisSize: MainAxisSize.max,
         children: [
+          Flexible(
+            flex: 1,
+            child: Container(
+              decoration: BoxDecoration(
+                  color: Colors.grey[200],
+                  borderRadius:BorderRadius.only(
+                    topLeft: Radius.circular(15.0),
+                    topRight: Radius.circular(15.0),
+                  )
+              ),
+              padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 15.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Comments",
+                    style: Theme.of(context).textTheme.headline6,
+                  ),
+                  comments.length != 0 ?
+                  SizedBox() :
+                  SizedBox(
+                    height: 15.0,
+                    width: 15.0,
+                    child: CircularProgressIndicator(),
+                  ),
+                ],
+              ),
+            ),
+          ),
           Container(
-            decoration: BoxDecoration(
-                color: Colors.grey[200],
-                borderRadius:BorderRadius.only(
-                  topLeft: Radius.circular(15.0),
-                  topRight: Radius.circular(15.0),
-                )
+            child: ListView.builder(
+                controller: scrollController,
+                itemCount: comments.length,
+                itemBuilder: (context, i) {
+                  return CommentItem(comments[i]);
+                }
             ),
-            padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 15.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  "Comments",
-                  style: Theme.of(context).textTheme.headline6,
-                ),
-                comments.length != 0 ?
-                SizedBox() :
-                SizedBox(
-                  height: 15.0,
-                  width: 15.0,
-                  child: CircularProgressIndicator(),
-                ),
-              ],
-            ),
-          ),
-          ListView.builder(
-              physics: NeverScrollableScrollPhysics(),
-              itemCount: comments.length,
-              itemBuilder: (context, i) {
-                return CommentItem(comments[i]);
-              }
-          ),
+          )
         ],
       ),
     );
