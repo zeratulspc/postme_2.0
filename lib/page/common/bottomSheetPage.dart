@@ -17,6 +17,25 @@ class BottomSheetPage extends StatefulWidget {
 class _BottomSheetPageState extends State<BottomSheetPage> {
   final GlobalKey _keyPeak = GlobalKey();
 
+  Widget _buildSlideAnimation(BuildContext context, Widget? child) {
+    var layout = _buildAnimatedBottomSheetWidget(context, child);
+    return GestureDetector(
+      //onVerticalDragDown: _onVerticalDragDown,
+      //onVerticalDragUpdate: _onVerticalDragUpdate,
+      //onVerticalDragEnd: _onVerticalDragEnd,
+      //onVerticalDragCancel: _handleDragCancel,
+      //onVerticalDragStart: _handleDragStart,
+      child: layout,
+    );
+  }
+
+  Widget _buildAnimatedBottomSheetWidget(BuildContext context, Widget? child) {
+    return FractionallySizedBox(
+        alignment: Alignment.bottomCenter,
+        //heightFactor: widget.animationController.value,
+        child: child);
+  }
+
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
@@ -34,6 +53,7 @@ class _BottomSheetPageState extends State<BottomSheetPage> {
         ),
       ],
     );
+
     return Scaffold();
   }
 

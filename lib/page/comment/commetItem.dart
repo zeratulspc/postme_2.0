@@ -1,8 +1,5 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:postme/fnc/data/Comment.dart';
-import 'package:postme/fnc/data/RandomColor.dart';
 
 class CommentItem extends StatelessWidget {
 

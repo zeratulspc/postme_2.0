@@ -3,7 +3,6 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:postme/fnc/data/Post.dart';
 import 'package:postme/fnc/data/RandomColor.dart';
-import 'package:postme/page/post/postEdit.dart';
 import 'postDetail.dart';
 
 
