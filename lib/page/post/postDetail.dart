@@ -91,9 +91,7 @@ class _PostDetailState extends State<PostDetail> {
                 color: Colors.grey[200],
                 child: SingleChildScrollView(
                   controller: scrollController,
-                  child: CommentList(postId,screenSize,bottomSheetHeaderSize,(){
-                    
-                  }),
+                  child: CommentList(postId,screenSize,bottomSheetHeaderSize,(){}),
                 ),
               );
             },
