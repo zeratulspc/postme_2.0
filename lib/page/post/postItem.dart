@@ -45,7 +45,14 @@ class PostItem extends StatelessWidget {
             ),
           ),
           onTap: (){
-            Navigator.push(context, MaterialPageRoute(builder: (context) => PostDetail(post.id)));
+            Navigator.push(context, MaterialPageRoute(builder: (context) =>
+                PostDetail(
+                    post.id, (){
+                      Navigator.pop(context);
+                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Remove Feature is not ready!")));
+                    }
+                )
+            ));
           },
         ),
       ),

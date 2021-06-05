@@ -5,10 +5,12 @@ import 'package:postme/fnc/data/Post.dart';
 import 'package:postme/fnc/data/RandomColor.dart';
 import 'package:postme/fnc/API/fetcher.dart';
 import 'package:postme/page/comment/commentList.dart';
+import 'package:postme/page/post/postEdit.dart';
 
 class PostDetail extends StatefulWidget {
   final int postId;
-  PostDetail(this.postId);
+  final VoidCallback onDeletePost;
+  PostDetail(this.postId, this.onDeletePost);
   _PostDetailState createState() => _PostDetailState(postId);
 }
 
@@ -16,6 +18,8 @@ class _PostDetailState extends State<PostDetail> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
   final int postId;
   _PostDetailState(this.postId);
+
+  Post? post;
 
   static const bottomSheetHeaderSize = 0.08;
 
@@ -32,6 +36,20 @@ class _PostDetailState extends State<PostDetail> {
       key: scaffoldKey,
       appBar: AppBar(
         title: Text("Post"),
+        actions: [
+          IconButton(
+            onPressed: (){
+              post!=null?
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>PostEditPage(post: post!,) )) :
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Post is unloaded!")));
+            },
+            icon: Icon(Icons.edit)
+          ),
+          IconButton(
+            onPressed: widget.onDeletePost,
+            icon: Icon(Icons.delete),
+          ),
+        ],
       ),
       backgroundColor: Colors.white,
       body: Stack(
@@ -40,7 +58,7 @@ class _PostDetailState extends State<PostDetail> {
             future: Fetcher().getPost(postId),
             builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
               if(snapshot.hasData) {
-                Post post = Post.fromSnapshot(snapshot);
+                post = Post.fromSnapshot(snapshot);
                 return Column(
                   children: [
                     ///header
@@ -49,7 +67,7 @@ class _PostDetailState extends State<PostDetail> {
                       child: Column(
                         children: [
                           Text(
-                            post.title,
+                            post!.title,
                             style: Theme.of(context).textTheme.headline5,
                             textAlign: TextAlign.center,
                           ),
@@ -58,7 +76,7 @@ class _PostDetailState extends State<PostDetail> {
                             children: [
                               Icon(Icons.person, color: randomColorList[Random().nextInt(randomColorList.length)]),
                               SizedBox(width: 2,),
-                              Text("User${post.userId}"),
+                              Text("User${post!.userId}"),
                             ],
                           ),
                         ],
@@ -68,7 +86,7 @@ class _PostDetailState extends State<PostDetail> {
                     Container(
                       margin: EdgeInsets.fromLTRB(15, 5, 15, 5),
                       child: Text(
-                        post.body,
+                        post!.body,
                         style: Theme.of(context).textTheme.bodyText2,
                       ),
                       alignment: Alignment.centerLeft,
