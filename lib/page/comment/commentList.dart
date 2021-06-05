@@ -20,34 +20,11 @@ class _CommentListState extends State<CommentList> {
   _CommentListState(this.postId, this.parentSize,this.headerSize,this.onCommentsLoaded);
 
   Fetcher fetch = Fetcher();
-  List<Comment> comments = [
-    Comment(1,1,"asd","asd","asdsad"),
-    Comment(1,1,"asd","asd","asdsad"),
-    Comment(1,1,"asd","asd","asdsad"),
-    Comment(1,1,"asd","asd","asdsad"),
-    Comment(1,1,"asd","asd","asdsad"),
-    Comment(1,1,"asd","asd","asdsad"),
-    Comment(1,1,"asd","asd","asdsad"),
-    Comment(1,1,"asd","asd","asdsad"),
-    Comment(1,1,"asd","asd","asdsad"),
-    Comment(1,1,"asd","asd","asdsad"),
-    Comment(1,1,"asd","asd","asdsad"),
-    Comment(1,1,"asd","asd","asdsad"),
-    Comment(1,1,"asd","asd","asdsad"),
-    Comment(1,1,"asd","asd","asdsad"),
-    Comment(1,1,"asd","asd","asdsad"),
-    Comment(1,1,"asd","asd","asdsad"),
-    Comment(1,1,"asd","asd","asdsad"),
-    Comment(1,1,"asd","asd","asdsad"),
-    Comment(1,1,"asd","asd","asdsad"),
-    Comment(1,1,"asd","asd","asdsad"),
-    Comment(1,1,"asd","asd","asdsad"),
-
-  ];
+  List<Comment> comments = [];
 
   @override
   void initState() {
-    //fetch.getComments(postId).then((v) => {setState(() => comments=v), onCommentsLoaded()});
+    fetch.getComments(postId).then((v) => {setState(() => comments=v), onCommentsLoaded()});
     super.initState();
   }
 
