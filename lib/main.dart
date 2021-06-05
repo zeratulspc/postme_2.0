@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:postme/page/splash.dart';
 
+///---------------------------------
+/// Postme2.0
+/// 만든이 : zeratulspc (김민재)
+/// 2021.6.5
+///---------------------------------
 void main() {
   runApp(PostMe());
 }
