@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:postme/fnc/data/Post.dart';
 import 'package:postme/fnc/data/RandomColor.dart';
-import 'package:postme/fnc/fetcher.dart';
+import 'package:postme/fnc/API/fetcher.dart';
 import 'package:postme/page/comment/commentList.dart';
 
 class PostDetail extends StatefulWidget {

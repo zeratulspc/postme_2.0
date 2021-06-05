@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:postme/fnc/data/Post.dart';
-import 'package:postme/fnc/fetcher.dart';
+import 'package:postme/fnc/API/fetcher.dart';
 import 'package:postme/page/post/postItem.dart';
 
 class PostList extends StatefulWidget {

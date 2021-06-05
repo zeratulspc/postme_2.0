@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:postme/fnc/data/Comment.dart';
-import 'package:postme/fnc/fetcher.dart';
+import 'package:postme/fnc/API/fetcher.dart';
 import 'package:postme/page/comment/commetItem.dart';
 
 class CommentList extends StatefulWidget {

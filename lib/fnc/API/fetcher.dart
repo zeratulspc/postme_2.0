@@ -17,7 +17,7 @@ class Fetcher {
       });
       return posts;
     } else {
-      throw Exception('불러오기 실패');
+      throw Exception('Fetch Failed');
     }
   }
 
@@ -26,7 +26,7 @@ class Fetcher {
     if(response.statusCode == 200) {
       return Post.fromJson(jsonDecode(response.body));
     } else {
-      throw Exception('불러오기 실패');
+      throw Exception('Fetch Failed');
     }
   }
 
@@ -40,7 +40,7 @@ class Fetcher {
       });
       return comments;
     } else {
-      throw Exception('불러오기 실패');
+      throw Exception('Fetch Failed');
     }
   }
 }

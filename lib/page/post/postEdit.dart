@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:postme/fnc/data/Post.dart';
-import 'package:postme/fnc/sender.dart';
+import 'package:postme/fnc/API/sender.dart';
 
 class PostEditPage extends StatefulWidget {
   final Post? post;
