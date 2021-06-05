@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:postme/page/appInfo.dart';
 
 import 'package:postme/page/post/postEdit.dart';
 import 'package:postme/page/post/postList.dart';
@@ -37,9 +36,6 @@ class _HomePageState extends State<HomePage> {
           case 0:
             Navigator.push(context, MaterialPageRoute(builder: (context)=> SettingPage()));
             break;
-          case 1:
-            Navigator.push(context, MaterialPageRoute(builder: (context)=> AppInfoPage()));
-            break;
           default:
             break;
         }
@@ -48,10 +44,6 @@ class _HomePageState extends State<HomePage> {
         PopupMenuItem<int>(
           value: 0,
           child: Text('Setting'),
-        ),
-        PopupMenuItem<int>(
-          value: 1,
-          child: Text('Info'),
         ),
       ],
     );
